@@ -1,0 +1,70 @@
+[project]
+name = "geometry"
+version = "0.1.0"
+description = "Dynamic geometry constructions on top of Manim"
+authors = [
+    {name = "beichenstanly",email = "zhengxgen@163.com"}
+]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "manim (>=0.19.0,<0.20.0)"
+]
+keywords = ["geometry", "manim", "animation", "education"]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Education",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Scientific/Engineering :: Mathematics"
+]
+
+[project.urls]
+Homepage = "https://github.com/2027L16/geometry"
+Issues = "https://github.com/2027L16/geometry/issues"
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+priority = "primary"
+
+
+[dependency-groups]
+dev = [
+    "pytest (>=8.4.2,<9.0.0)",
+    "ruff (>=0.14.1,<0.15.0)"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+extend-exclude = [
+    "media",
+    "__pycache__",
+    ".venv",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = [
+    "E203",  # align with black style spacing around colons
+]
+
+[tool.ruff.lint.per-file-ignores]
+"core/__init__.py" = ["F401"]
+"elements/__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["."]
